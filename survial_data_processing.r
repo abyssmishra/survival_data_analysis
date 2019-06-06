@@ -10,13 +10,13 @@ pacman::p_load(openxlsx,tools)
 #(format: 1st row=headers, 1st column=time, 2nd column onwards=data)
 i_filename <- file.choose()
 
-###########################################################################
+##############################################################################
 #obtaining the directory address from the input file path
 #a_directory <- dirname(i_filename)
-#setwd(a_directory)  #set the input file directory as the working directory
+#setwd(a_directory)  #to set the input file directory as the working directory
 #(alternatively, folder.choose can be used to get a user-specified address)
-#current active code just uses the address of the input file
-###########################################################################
+#the current active code just uses the address of the input file
+##############################################################################
 
 #stores names of the worksheets from the input excel file
 sheets <- openxlsx::getSheetNames(i_filename)
@@ -37,12 +37,13 @@ for (w_sheet in sheets) {
   #accessing the column with input time data (in hours)
   time_col <- i_sheet[1]
   
-  #############################################################
+  ##################################################################
+  #Alternative way to have the dataframe named after input worksheet
   #create output dataframe for the current input data worksheet
   #o_df <- paste0("_", w_sheet, "_")
   #assign(o_df, EMPTY OUTPUT DATAFRAME)
   #get(o_df)
-  #############################################################
+  ##################################################################
   
   #highest number of individuals per column from the active input data worksheet (df)
   n_ind <- max(i_sheet[-1],na.rm = TRUE)    #(na.rm disregards NA values)
